@@ -1,22 +1,41 @@
 //
 //  ContentView.swift
-//  WhatzApp_Comic
+//  Whatzapp0
 //
-//  Created by Sarah Ndenbe on 17/11/22.
+//  Created by Sarah Ndenbe on 16/11/22.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            TabView{
+                StatusView()
+                    .tabItem {
+                        Label("Status", systemImage: "circle.dashed.inset.filled")
+                    }
+                CallsView()
+                    .tabItem {
+                        Label("Calls", systemImage: "phone")
+                    }
+                CameraView()
+                    .tabItem {
+                        Label("Camera", systemImage: "camera")
+                    }
+                ChatView()
+                    .tabItem {
+                        Label("Chats", systemImage: "person.2.wave.2.fill")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+            }
         }
-        .padding()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

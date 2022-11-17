@@ -11,6 +11,12 @@
 		E1A2B8902926C81600700366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B88F2926C81600700366 /* ContentView.swift */; };
 		E1A2B8922926C81700700366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8912926C81700700366 /* Assets.xcassets */; };
 		E1A2B8952926C81700700366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8942926C81700700366 /* Preview Assets.xcassets */; };
+		E1A2B89F2926CA5E00700366 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B89E2926CA5E00700366 /* StatusView.swift */; };
+		E1A2B8A12926CA7100700366 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A02926CA7100700366 /* SettingsView.swift */; };
+		E1A2B8A32926CA7F00700366 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A22926CA7F00700366 /* CameraView.swift */; };
+		E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A42926CA9400700366 /* CallsView.swift */; };
+		E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A62926CAA600700366 /* ChatView.swift */; };
+		E1A2B8A92926CAB900700366 /* SingleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A82926CAB900700366 /* SingleChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		E1A2B88F2926C81600700366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1A2B8912926C81700700366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A2B8942926C81700700366 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E1A2B89E2926CA5E00700366 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		E1A2B8A02926CA7100700366 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E1A2B8A22926CA7F00700366 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		E1A2B8A42926CA9400700366 /* CallsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallsView.swift; sourceTree = "<group>"; };
+		E1A2B8A62926CAA600700366 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		E1A2B8A82926CAB900700366 /* SingleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,8 @@
 		E1A2B88C2926C81600700366 /* WhatzApp_Comic */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2B89C2926C8FD00700366 /* View */,
+				E1A2B89B2926C8F000700366 /* Model */,
 				E1A2B88D2926C81600700366 /* WhatzApp_ComicApp.swift */,
 				E1A2B88F2926C81600700366 /* ContentView.swift */,
 				E1A2B8912926C81700700366 /* Assets.xcassets */,
@@ -65,6 +79,34 @@
 				E1A2B8942926C81700700366 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E1A2B89B2926C8F000700366 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1A2B89C2926C8FD00700366 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1A2B8A62926CAA600700366 /* ChatView.swift */,
+				E1A2B8A82926CAB900700366 /* SingleChatView.swift */,
+				E1A2B89D2926CA3600700366 /* Static */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1A2B89D2926CA3600700366 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				E1A2B89E2926CA5E00700366 /* StatusView.swift */,
+				E1A2B8A02926CA7100700366 /* SettingsView.swift */,
+				E1A2B8A22926CA7F00700366 /* CameraView.swift */,
+				E1A2B8A42926CA9400700366 /* CallsView.swift */,
+			);
+			path = Static;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A2B8902926C81600700366 /* ContentView.swift in Sources */,
+				E1A2B8A12926CA7100700366 /* SettingsView.swift in Sources */,
 				E1A2B88E2926C81600700366 /* WhatzApp_ComicApp.swift in Sources */,
+				E1A2B8A32926CA7F00700366 /* CameraView.swift in Sources */,
+				E1A2B8A92926CAB900700366 /* SingleChatView.swift in Sources */,
+				E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */,
+				E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */,
+				E1A2B89F2926CA5E00700366 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

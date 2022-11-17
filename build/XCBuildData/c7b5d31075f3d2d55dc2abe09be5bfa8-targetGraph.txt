@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-WhatzApp_Comic in WhatzApp_Comic, no dependencies
