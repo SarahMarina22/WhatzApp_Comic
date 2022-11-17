@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "b08ca433c882f5a98b76031b7e5ecdb1d7afcbd809a83bdfc7cd1eda102bec41"
+build_start_time: [1668714650, 586276054]
+build_end_time: [1668714650, 604171037]
+inputs:
+  "/Users/sarahndenbe/Documents/WhatzApp_Comic/WhatzApp_Comic/ContentView.swift": !private [1668714646, 349423170]
+  "/Users/sarahndenbe/Documents/WhatzApp_Comic/WhatzApp_Comic/WhatzApp_ComicApp.swift": !private [1668714646, 346669673]

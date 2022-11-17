@@ -1,0 +1,12 @@
+{
+  "source": "/Users/sarahndenbe/Documents/WhatzApp_Comic/WhatzApp_Comic/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Hello, world!"
+      }
+    ]
+  },
+  "version": 1
+}
