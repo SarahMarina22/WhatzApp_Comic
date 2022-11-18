@@ -178,7 +178,7 @@ struct ChatView: View {
                         }
                     }.listStyle(.plain)
                 }
-            }//.navigationTitle("Chats")
+            }.navigationTitle(" Chats ")
         
     }
 }

@@ -17,6 +17,9 @@
 		E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A42926CA9400700366 /* CallsView.swift */; };
 		E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A62926CAA600700366 /* ChatView.swift */; };
 		E1A2B8A92926CAB900700366 /* SingleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8A82926CAB900700366 /* SingleChatView.swift */; };
+		E1A2B8AB2926CE8900700366 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AA2926CE8900700366 /* CreditView.swift */; };
+		E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AC29278DEB00700366 /* BubbleModel.swift */; };
+		E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AE2927A60A00700366 /* RecordModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		E1A2B8A42926CA9400700366 /* CallsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallsView.swift; sourceTree = "<group>"; };
 		E1A2B8A62926CAA600700366 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		E1A2B8A82926CAB900700366 /* SingleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChatView.swift; sourceTree = "<group>"; };
+		E1A2B8AA2926CE8900700366 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
+		E1A2B8AC29278DEB00700366 /* BubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleModel.swift; sourceTree = "<group>"; };
+		E1A2B8AE2927A60A00700366 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,8 @@
 		E1A2B89B2926C8F000700366 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2B8AC29278DEB00700366 /* BubbleModel.swift */,
+				E1A2B8AE2927A60A00700366 /* RecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A2B89E2926CA5E00700366 /* StatusView.swift */,
+				E1A2B8AA2926CE8900700366 /* CreditView.swift */,
 				E1A2B8A02926CA7100700366 /* SettingsView.swift */,
 				E1A2B8A22926CA7F00700366 /* CameraView.swift */,
 				E1A2B8A42926CA9400700366 /* CallsView.swift */,
@@ -180,12 +189,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A2B8902926C81600700366 /* ContentView.swift in Sources */,
+				E1A2B8AB2926CE8900700366 /* CreditView.swift in Sources */,
 				E1A2B8A12926CA7100700366 /* SettingsView.swift in Sources */,
 				E1A2B88E2926C81600700366 /* WhatzApp_ComicApp.swift in Sources */,
 				E1A2B8A32926CA7F00700366 /* CameraView.swift in Sources */,
 				E1A2B8A92926CAB900700366 /* SingleChatView.swift in Sources */,
 				E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */,
+				E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */,
 				E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */,
+				E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */,
 				E1A2B89F2926CA5E00700366 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

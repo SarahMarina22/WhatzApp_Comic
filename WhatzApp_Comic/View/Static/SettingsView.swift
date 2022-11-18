@@ -72,47 +72,47 @@ struct SettingsView: View {
                         
                         Section {
                             NavigationLink(destination: {
-                                CameraView()
+                                CreditView()
                             }, label: {
                                 Label("Starred Messages", systemImage: "star")
                             })
                             
                             NavigationLink(destination: {
-                                CameraView()
+                                CreditView()
                             }, label: {
                                 Label("Linked Devices", systemImage: "laptopcomputer")
                             })
                         }
                         
                         NavigationLink(destination: {
-                            CameraView()
+                            CreditView()
                         }, label: {
                             Label("Account", systemImage: "key")
                         })
                         NavigationLink(destination: {
-                            CameraView()
+                            CreditView()
                         }, label: {
                             Label("Chats", systemImage: "phone.bubble.left")
                             
                         })
                         NavigationLink(destination: {
-                            CameraView()
+                            CreditView()
                         }, label: {
                             Label("Notifications", systemImage: "app.badge.fill")
                         })
                         NavigationLink(destination: {
-                            CameraView()
+                            CreditView()
                         }, label: {
                             Label("Storage and Data", systemImage: "arrow.up.arrow.down.square.fill")
                         })
                         Section{
                             NavigationLink(destination: {
-                                CameraView()
+                                CreditView()
                             }, label: {
                                 Label("Help", systemImage: "info")
                             })
                             NavigationLink(destination: {
-                                CameraView()
+                                CreditView()
                             }, label: {
                                 Label("Tell a Friend", systemImage: "heart")
                             })
