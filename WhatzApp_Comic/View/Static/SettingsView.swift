@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isDarkMode") var isDarkMode = false
     var body: some View {
             ZStack{
                 Color("BackgroundColor").ignoresSafeArea()
@@ -31,19 +32,20 @@ struct SettingsView: View {
                     
                 
                     ZStack{
-                        Color(.white)
+                        Color(uiColor: .systemBackground)
                         HStack(alignment: .center){
                             
                             ZStack {
                                 Circle()
                                     .foregroundColor(.gray)
-                                    .frame(width: 80)
+                                    .frame(width: 85)
                                 Image(systemName: "person.fill")
                                     .font(.system(size: 65))
                                     .foregroundColor(.white)
-                                    .offset(y:5)
+                                    .offset(y:4)
                                 Image(systemName: "circle")
                                     .font(.system(size: 80))
+                                    .fontWeight(.heavy)
                                     .foregroundColor(.gray)
                             }
                             HStack(alignment: .firstTextBaseline) {
@@ -116,11 +118,15 @@ struct SettingsView: View {
                             }, label: {
                                 Label("Tell a Friend", systemImage: "heart")
                             })
+                            
+                            Toggle(isOn: $isDarkMode) {
+                                Text("High Contrast").foregroundColor(.accentColor)
                         }
                     }.listStyle(.grouped)
-                   
+                    
+                    }
                 }
-            }
+            }.preferredColorScheme(isDarkMode ? .dark : .light)
         
     }
 }

@@ -59,6 +59,7 @@ struct StatusView: View {
                                     .offset(y:5)
                                 Image(systemName: "circle")
                                     .font(.system(size: 80))
+                                    .fontWeight(.heavy)
                                     .foregroundColor(.gray)
                             }.overlay(
                                 VStack{

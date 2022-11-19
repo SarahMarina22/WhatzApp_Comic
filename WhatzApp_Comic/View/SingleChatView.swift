@@ -166,7 +166,7 @@ struct TheTimeline : View {
 struct Header : View {
     var body: some View {
         ZStack{
-            Color("BackgroundColor")
+            Color(uiColor: .systemGray6)
                 .ignoresSafeArea()
             
             NavigationLink(destination: {

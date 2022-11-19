@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @AppStorage("isDarkMode") var isDarkMode = false
     var body: some View {
         NavigationView {
             TabView{
@@ -33,7 +33,7 @@ struct ContentView: View {
                         Label("Settings", systemImage: "gear")
                     }
             }
-        }
+        }.preferredColorScheme(isDarkMode ? .dark : .light)
     }
     
 }
