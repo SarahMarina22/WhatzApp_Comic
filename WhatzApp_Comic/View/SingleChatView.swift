@@ -151,17 +151,41 @@ struct TheTimeline : View {
     var body: some View {
         ScrollView(.horizontal) {
             ZStack {
-                
-                
-                HStack{
-                    BubbleView(voiceMessage:  testBubbleMeReplyFolded)
-                    
+                VStack {
+                    ArianaLine().padding(.top,50)
+                    Spacer()
+                    HStack{
+                        BubbleView(voiceMessage:  testBubbleMeReplyFolded)
+                        Spacer()
+                    }
                 }
             }
         }.frame(height: 500)
     }
 }
 
+struct ArianaLine : View{
+    var body: some View{
+        ZStack{
+            RoundedRectangle(cornerRadius: 5)
+                .foregroundColor(Color("Ariane"))
+
+                .border(Color(uiColor: .systemGray6))
+                .frame(width: 700,height: 25)
+                .padding(.leading,40)
+                .shadow(radius: 0.5)
+            
+            HStack{
+                Text("Monday").padding(.leading,30)
+                Spacer()
+                Text("09:30").padding(.trailing,120)
+                Spacer()
+            }.padding()
+                .fontWeight(.medium)
+                .font(.system(size: 15))
+        }
+    }
+}
 
 struct Header : View {
     var body: some View {

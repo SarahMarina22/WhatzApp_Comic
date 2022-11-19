@@ -189,7 +189,7 @@ struct ReactionBtn: View {
             heart.size = CGSize(width: 90, height: 110)
             
             like.reactionName = "like"
-            like.size = CGSize(width: 80, height: 120)
+            like.size = CGSize(width: 90, height: 160)
             
             dislike.reactionName = "dislike"
             dislike.size = CGSize(width: 100, height: 120)
