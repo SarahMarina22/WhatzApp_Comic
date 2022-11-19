@@ -21,6 +21,13 @@
 		E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AC29278DEB00700366 /* BubbleModel.swift */; };
 		E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AE2927A60A00700366 /* RecordModel.swift */; };
 		E1A2B8B129287D9400700366 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8B029287D9400700366 /* KeyboardView.swift */; };
+		E1A2B8B32928FF7B00700366 /* ReactionSpriteKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8B22928FF7B00700366 /* ReactionSpriteKit.swift */; };
+		E1A2B8B5292910DA00700366 /* heart.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8B4292910DA00700366 /* heart.atlas */; };
+		E1A2B8C5292928A500700366 /* like.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8C0292928A400700366 /* like.atlas */; };
+		E1A2B8C6292928A500700366 /* dislike.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8C1292928A400700366 /* dislike.atlas */; };
+		E1A2B8C7292928A500700366 /* what.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8C2292928A400700366 /* what.atlas */; };
+		E1A2B8C8292928A500700366 /* wow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8C3292928A400700366 /* wow.atlas */; };
+		E1A2B8C9292928A500700366 /* lol.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8C4292928A500700366 /* lol.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +46,13 @@
 		E1A2B8AC29278DEB00700366 /* BubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleModel.swift; sourceTree = "<group>"; };
 		E1A2B8AE2927A60A00700366 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		E1A2B8B029287D9400700366 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		E1A2B8B22928FF7B00700366 /* ReactionSpriteKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionSpriteKit.swift; sourceTree = "<group>"; };
+		E1A2B8B4292910DA00700366 /* heart.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = heart.atlas; sourceTree = "<group>"; };
+		E1A2B8C0292928A400700366 /* like.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = like.atlas; sourceTree = "<group>"; };
+		E1A2B8C1292928A400700366 /* dislike.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dislike.atlas; sourceTree = "<group>"; };
+		E1A2B8C2292928A400700366 /* what.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = what.atlas; sourceTree = "<group>"; };
+		E1A2B8C3292928A400700366 /* wow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = wow.atlas; sourceTree = "<group>"; };
+		E1A2B8C4292928A500700366 /* lol.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lol.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,12 @@
 				E1A2B88D2926C81600700366 /* WhatzApp_ComicApp.swift */,
 				E1A2B88F2926C81600700366 /* ContentView.swift */,
 				E1A2B8912926C81700700366 /* Assets.xcassets */,
+				E1A2B8C1292928A400700366 /* dislike.atlas */,
+				E1A2B8C0292928A400700366 /* like.atlas */,
+				E1A2B8C4292928A500700366 /* lol.atlas */,
+				E1A2B8C2292928A400700366 /* what.atlas */,
+				E1A2B8C3292928A400700366 /* wow.atlas */,
+				E1A2B8B4292910DA00700366 /* heart.atlas */,
 				E1A2B8932926C81700700366 /* Preview Content */,
 			);
 			path = WhatzApp_Comic;
@@ -94,6 +114,7 @@
 			children = (
 				E1A2B8AC29278DEB00700366 /* BubbleModel.swift */,
 				E1A2B8AE2927A60A00700366 /* RecordModel.swift */,
+				E1A2B8B22928FF7B00700366 /* ReactionSpriteKit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,8 +200,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A2B8B5292910DA00700366 /* heart.atlas in Resources */,
+				E1A2B8C6292928A500700366 /* dislike.atlas in Resources */,
 				E1A2B8952926C81700700366 /* Preview Assets.xcassets in Resources */,
+				E1A2B8C9292928A500700366 /* lol.atlas in Resources */,
+				E1A2B8C8292928A500700366 /* wow.atlas in Resources */,
+				E1A2B8C5292928A500700366 /* like.atlas in Resources */,
 				E1A2B8922926C81700700366 /* Assets.xcassets in Resources */,
+				E1A2B8C7292928A500700366 /* what.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +228,7 @@
 				E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */,
 				E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */,
 				E1A2B8B129287D9400700366 /* KeyboardView.swift in Sources */,
+				E1A2B8B32928FF7B00700366 /* ReactionSpriteKit.swift in Sources */,
 				E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */,
 				E1A2B89F2926CA5E00700366 /* StatusView.swift in Sources */,
 			);

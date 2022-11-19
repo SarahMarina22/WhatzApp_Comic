@@ -12,6 +12,7 @@ struct Keyboard:View{
     @State var voiceInShape : String = "Voice Message"
     @State var isVoiceMessageDone : Bool = false
     @State var isVoiceMessagePlaying : Bool = false // variable environement
+    @State var isReactionBtnPressed : Bool = false
     var body: some View{
         VStack {
             
@@ -20,8 +21,8 @@ struct Keyboard:View{
                     .resizable()
                     .scaledToFill()
                 HStack{
-                    ReactionBtn(isVoiceMessagePlaying: isVoiceMessagePlaying)
-                   
+                    ReactionBtn(isVoiceMessagePlaying: $isVoiceMessagePlaying,btnIsPressed: $isReactionBtnPressed)
+                    
                     Spacer()
                     TextField("Voice Shaped", text: $voiceInShape)
                         .fontWeight(.light)
@@ -44,30 +45,41 @@ struct Keyboard:View{
                     }.padding(.trailing,35)
                     
                     Button {
-                                           
-                                               // Suppr the voice message
-                                               // bubble duration 0:00
-                                           
-                                           isVoiceMessageDone.toggle()
-                                       } label: {
-                                           Image(systemName: "delete.left.fill") // 􀆘
-                                               .resizable()
-                                               .scaledToFill()
-                                               .frame(width: 25,height: 22)
-                                       }
-
+                        
+                        // Suppr the voice message
+                        // bubble duration 0:00
+                        
+                        isVoiceMessageDone.toggle()
+                    } label: {
+                        Image(systemName: "delete.left.fill") // 􀆘
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 25,height: 22)
+                    }
+                    
                 }.padding(.horizontal)
             }
-            ZStack {
-                Image("Audio Keyboard Shape")
+            if (isReactionBtnPressed == false) {
+                ZStack {
+                    Image("Audio Keyboard Shape")
+                        .resizable()
+                        .scaledToFill()
+                        .offset(y:-11)
+                    
+                    HStack {
+                        Spacer()
+                        RecButton().offset(y:-15)
+                        TrimButton().offset(y:-15)
+                    }
+                }
+            } else {
+                ZStack {
+                    Image("Audio Keyboard Shape")
                     .resizable()
                     .scaledToFill()
                     .offset(y:-11)
-                
-                HStack {
-                    Spacer()
-                    RecButton().offset(y:-15)
-                    TrimButton().offset(y:-15)
+               
+                    ReactionEmoji()
                 }
             }
             Spacer()
@@ -168,10 +180,30 @@ struct KeyboardView_Previews: PreviewProvider {
 }
 
 struct ReactionBtn: View {
-    var isVoiceMessagePlaying : Bool
+    @Binding var isVoiceMessagePlaying : Bool
+    @Binding var btnIsPressed : Bool
     var body: some View {
         Button {
-            //
+            //display reaction and timestamp
+            heart.reactionName = "heart"
+            heart.size = CGSize(width: 90, height: 110)
+            
+            like.reactionName = "like"
+            like.size = CGSize(width: 80, height: 120)
+            
+            dislike.reactionName = "dislike"
+            dislike.size = CGSize(width: 100, height: 120)
+            
+            lol.reactionName = "lol"
+            lol.size = CGSize(width: 100, height: 120)
+            
+            wow.reactionName = "wow"
+            wow.size = CGSize(width: 80, height: 80)
+            
+            what.reactionName = "what"
+            what.size = CGSize(width: 60, height: 60)
+            
+            btnIsPressed.toggle()
         } label: {
             ZStack {
                 Rectangle()
@@ -182,8 +214,55 @@ struct ReactionBtn: View {
                 Image("Emoji Glyph")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 25,height: 22)
+                    .frame(width: 25,height: 25)
             }
         }
     }
 }
+
+
+
+struct ReactionEmoji:View{
+    var body: some View{
+        
+        VStack {
+            HStack {
+                Button {
+                    // put a heart above the waveform
+                } label: {
+                    SpriteView(scene: heart)
+                }
+                Button {
+                    // put a like above the waveform
+                } label: {
+                    SpriteView(scene: like)
+                }
+                Button {
+                    // put a dislike above the waveform
+                } label: {
+                    SpriteView(scene: dislike)
+                }
+                Button {
+                    // put a haha above the waveform
+                } label: {
+                    SpriteView(scene: lol)
+                }
+                Button {
+                    // put a  !!  above the waveform
+                } label: {
+                    SpriteView(scene: wow)
+                }
+                Button {
+                    // put a ? above the waveform
+                } label: {
+                    SpriteView(scene: what)
+                }
+            }.frame(alignment: .center)
+                .frame(height: 60)
+                .padding()
+                
+            Spacer()
+        }
+    }
+}
+
