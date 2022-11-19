@@ -7,13 +7,23 @@
 
 import Foundation
 
-
 struct Bubble{
     var provenance : MessageFrom
     var isReplying : Bool
     var isFolded : Bool
-    var duration : String
-    var bubbleFrame : BubbleFrame
+    var isPlaying : Bool
+    var audio : AudioMessage
+    var bubbleFrame : BubbleFrame  {
+        if(isFolded == true){
+           return  BubbleFrame.folded
+        }else{
+           return  BubbleFrame.big
+        }
+    }
+    
+    //DateInterval and TimeInterval
+    
+    var replyRef : String? // if a bubble is a reply, link it to the bubble
     
     func bubbleShaper () -> String{
         var bubbleShape : String
@@ -56,6 +66,30 @@ struct Bubble{
         }
     }
     
+   
+    
+}
+
+struct AudioMessage{
+    
+    var duration : Int // in seconds
+    var waveform : [Int] = [0]
+    var reactionSpriteArray : [String] = ["heart0"]
+    
+    func durationHumanFormatter () -> String{
+        var humanReadableDuration : String
+        var day : Int
+        var hour : Int
+        var minute : Int
+        var sec : Int
+      
+        
+        humanReadableDuration = duration.formatted()
+        return humanReadableDuration
+    }
+    
+    
+    // duration to play remaining, duration already played
 }
 
 enum MessageFrom {
@@ -66,5 +100,5 @@ enum BubbleFrame{
     case big,folded
 }
 
-var testBubbleExtFolded = Bubble(provenance: .other, isReplying: false, isFolded: false, duration: "3:00", bubbleFrame: .folded)
-var testBubbleMeReplyFolded = Bubble(provenance: .me, isReplying: true, isFolded: true, duration: "3:00", bubbleFrame: .folded)
+var testBubbleExtFolded = Bubble(provenance: .other, isReplying: false, isFolded: false, isPlaying: false, audio: AudioMessage(duration: 120))
+var testBubbleMeReplyFolded = Bubble(provenance: .me, isReplying: true, isFolded: true, isPlaying: false, audio: AudioMessage( duration: 790))

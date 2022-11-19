@@ -20,6 +20,7 @@
 		E1A2B8AB2926CE8900700366 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AA2926CE8900700366 /* CreditView.swift */; };
 		E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AC29278DEB00700366 /* BubbleModel.swift */; };
 		E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8AE2927A60A00700366 /* RecordModel.swift */; };
+		E1A2B8B129287D9400700366 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8B029287D9400700366 /* KeyboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		E1A2B8AA2926CE8900700366 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		E1A2B8AC29278DEB00700366 /* BubbleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleModel.swift; sourceTree = "<group>"; };
 		E1A2B8AE2927A60A00700366 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		E1A2B8B029287D9400700366 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				E1A2B8A62926CAA600700366 /* ChatView.swift */,
 				E1A2B8A82926CAB900700366 /* SingleChatView.swift */,
+				E1A2B8B029287D9400700366 /* KeyboardView.swift */,
 				E1A2B89D2926CA3600700366 /* Static */,
 			);
 			path = View;
@@ -197,6 +200,7 @@
 				E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */,
 				E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */,
 				E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */,
+				E1A2B8B129287D9400700366 /* KeyboardView.swift in Sources */,
 				E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */,
 				E1A2B89F2926CA5E00700366 /* StatusView.swift in Sources */,
 			);
