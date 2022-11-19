@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct Keyboard:View{
     @State var voiceInShape : String = "Voice Message"
@@ -19,21 +20,7 @@ struct Keyboard:View{
                     .resizable()
                     .scaledToFill()
                 HStack{
-                    Button {
-                        //
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 38,height: 34)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(isVoiceMessagePlaying ? .white : UIColor.systemGray4))
-                                .shadow(radius: 1)
-                            Image("Emoji Glyph")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 25,height: 22)
-                        }
-                    }
+                    ReactionBtn(isVoiceMessagePlaying: isVoiceMessagePlaying)
                    
                     Spacer()
                     TextField("Voice Shaped", text: $voiceInShape)
@@ -176,6 +163,27 @@ struct KeyboardView_Previews: PreviewProvider {
             Header().padding(.bottom,10)
             TheTimeline()
             Keyboard()
+        }
+    }
+}
+
+struct ReactionBtn: View {
+    var isVoiceMessagePlaying : Bool
+    var body: some View {
+        Button {
+            //
+        } label: {
+            ZStack {
+                Rectangle()
+                    .frame(width: 38,height: 34)
+                    .cornerRadius(10)
+                    .foregroundColor(Color(isVoiceMessagePlaying ? .white : UIColor.systemGray4))
+                    .shadow(radius: 1)
+                Image("Emoji Glyph")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 25,height: 22)
+            }
         }
     }
 }
