@@ -32,7 +32,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Settings", systemImage: "gear")
                     }
-            }
+            }.navigationTitle(" ")
         }.preferredColorScheme(isDarkMode ? .dark : .light)
     }
     

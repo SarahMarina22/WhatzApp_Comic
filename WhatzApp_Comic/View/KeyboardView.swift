@@ -68,8 +68,8 @@ struct Keyboard:View{
                     
                     HStack {
                         Spacer()
-                        RecButton().offset(y:-15)
-                        TrimButton().offset(y:-15)
+                        RecButton().offset(y:-25)
+                        TrimButton().offset(y:-25).padding(.trailing,20)
                     }
                 }
             } else {
@@ -83,7 +83,7 @@ struct Keyboard:View{
                 }
             }
             Spacer()
-        }
+        }.padding(.bottom,80)
     }
 }
 
@@ -94,7 +94,7 @@ struct RecButton: View{
         ZStack{
             Image("RecHalo")
                 .resizable()
-                .frame(width: 150,height: 150)
+                .frame(width: 120,height: 120)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                         /*breathe.toggle()*/}
@@ -103,7 +103,7 @@ struct RecButton: View{
                 .opacity(breathe ? 1 : 0)
             Image("Rec Btn")
                 .resizable()
-                .frame(width: 50,height: 50)
+                .frame(width: 45,height: 45)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                     }
@@ -116,7 +116,7 @@ struct RecButton: View{
                 ZStack {
                     Image("Rec Btn")
                         .resizable()
-                        .frame(width: 100,height: 100)
+                        .frame(width: 90,height: 90)
                     Image(systemName:  buttonSymbol)
                         .resizable()
                         .scaledToFit()
@@ -135,7 +135,7 @@ struct TrimButton: View{
         ZStack{
             Image("TrimHalo")
                 .resizable()
-                .frame(width: 150,height: 150)
+                .frame(width: 120,height: 120)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                         /*breathe.toggle()*/}
@@ -144,7 +144,7 @@ struct TrimButton: View{
                 .opacity(breathe ? 1 : 0)
             Image("TrimBtn")
                 .resizable()
-                .frame(width: 50,height: 50)
+                .frame(width: 40,height: 40)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                     }
@@ -157,7 +157,7 @@ struct TrimButton: View{
                 ZStack {
                     Image("TrimBtn")
                         .resizable()
-                        .frame(width: 100,height: 100)
+                        .frame(width: 40,height: 40)
                     Image(systemName:  buttonSymbol)
                         .resizable()
                         .frame(width: 33,height: 38)
@@ -172,7 +172,7 @@ struct TrimButton: View{
 struct KeyboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            Header().padding(.bottom,10)
+            Header()
             TheTimeline()
             Keyboard()
         }
@@ -211,10 +211,18 @@ struct ReactionBtn: View {
                     .cornerRadius(10)
                     .foregroundColor(Color(isVoiceMessagePlaying ? .white : UIColor.systemGray4))
                     .shadow(radius: 1)
-                Image("Emoji Glyph")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 25,height: 25)
+                if( btnIsPressed  == false ){
+                    Image( "Emoji Glyph")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 25,height: 25)
+                    
+                }else{
+                    Image( systemName: "mic.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 20,height: 20)
+                }
             }
         }
     }
