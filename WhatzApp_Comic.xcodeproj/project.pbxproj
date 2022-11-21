@@ -92,8 +92,7 @@
 		E1A2B88C2926C81600700366 /* WhatzApp_Comic */ = {
 			isa = PBXGroup;
 			children = (
-				E1A2B8D0292ADBAB00700366 /* bad.mp3 */,
-				E1A2B8CD292AB44F00700366 /* AudioFiles */,
+				E1A2B8D4292C060000700366 /* AudioFiles */,
 				E1A2B8CC292A9B5500700366 /* WhatzApp-Comic-Info.plist */,
 				E1A2B89C2926C8FD00700366 /* View */,
 				E1A2B89B2926C8F000700366 /* Model */,
@@ -122,7 +121,6 @@
 		E1A2B89B2926C8F000700366 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1A2B8CE292AB48100700366 /* Loved.wav */,
 				E1A2B8AC29278DEB00700366 /* BubbleModel.swift */,
 				E1A2B8AE2927A60A00700366 /* RecordModel.swift */,
 				E1A2B8B22928FF7B00700366 /* ReactionSpriteKit.swift */,
@@ -154,11 +152,14 @@
 			path = Static;
 			sourceTree = "<group>";
 		};
-		E1A2B8CD292AB44F00700366 /* AudioFiles */ = {
+		E1A2B8D4292C060000700366 /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2B8CE292AB48100700366 /* Loved.wav */,
+				E1A2B8D0292ADBAB00700366 /* bad.mp3 */,
 			);
-			path = AudioFiles;
+			name = AudioFiles;
+			path = AudioFiles/AudioFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -13,6 +13,8 @@ struct VoiceButton{
     var btnColor : String
 }
 
+
+
 enum SymbolicState {
     case Play,Pause,Mic
 }

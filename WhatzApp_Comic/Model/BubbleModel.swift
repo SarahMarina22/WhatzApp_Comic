@@ -78,7 +78,7 @@ struct Bubble : Identifiable{
 struct AudioMessage{
     
     var duration : Int // in seconds
-    var waveform : [Int] = [0]
+    var waveform : [Int] = shuffleFakeWave()
     var reactionSpriteArray : [String] = ["heart0"]
   //  var sentDate : Date = Date(timeInterval: <#T##TimeInterval#>, since: .now) // to figure out
     
@@ -126,6 +126,16 @@ var disscuss = [
     testBubbleExtNoReplyBig,
     testBubbleMeReplyFolded
 ]
+
+
+
+func shuffleFakeWave() -> [Int]{
+    var shuffleFW = [1,4,3,2,5,6,7,3,4,5,6,4,6,3,2,4,5,3,2,1,3,3,1,2,3,4,5,6,6]
+    shuffleFW.shuffle()
+    
+    return shuffleFW
+}
+
 
 /// AUDIO MANAGER
 ///
@@ -187,22 +197,11 @@ func readWavIntoFloats(fname: String, ext: String) -> [Float] {
     
     // this makes a copy, you might not want that
     let floatArray = Array(UnsafeBufferPointer(start: buf.floatChannelData?[0], count:Int(buf.frameLength)))
-
+    
     return floatArray
 
 }
 
 
-func soundToFloats() {
-    let sourceFile: AVAudioFile
-    let format: AVAudioFormat
-    do {
-        let sourceFileURL = Bundle.main.url(forResource: "bad", withExtension: "mp3")!
-        sourceFile = try AVAudioFile(forReading: sourceFileURL)
-        format = sourceFile.processingFormat
-    } catch {
-        fatalError("Unable to load the source audio file: \(error.localizedDescription).")
-    }
-}
-
 var audioToChart : [Float] = readWavIntoFloats(fname: "bad", ext: "mp3")
+
