@@ -77,8 +77,10 @@ struct Bubble : Identifiable{
 
 struct AudioMessage{
     
+    var audioName : String
     var duration : Int // in seconds
     var waveform : [Int] = shuffleFakeWave()
+    var realWaveform : [bribMonologue] = [bribMonologue(aPosition: 0, aPulse: 0.2)]
     var reactionSpriteArray : [String] = ["heart0"]
   //  var sentDate : Date = Date(timeInterval: <#T##TimeInterval#>, since: .now) // to figure out
     
@@ -106,15 +108,15 @@ enum BubbleFrame{
     case big,folded
 }
 
-var testBubbleExtReplyFolded = Bubble(provenance: .other, isReplying: true, isFolded: true, isPlaying: false, audio: AudioMessage(duration: 120))
-var testBubbleExtNoReplyFolded = Bubble(provenance: .other, isReplying: false, isFolded: true, isPlaying: false, audio: AudioMessage(duration: 120))
-var testBubbleMeReplyFolded = Bubble(provenance: .me, isReplying: true, isFolded: true, isPlaying: false, audio: AudioMessage( duration: 790))
-var testBubbleMeNoReplyFolded = Bubble(provenance: .me, isReplying: false, isFolded: true, isPlaying: false, audio: AudioMessage( duration: 790))
+var testBubbleExtReplyFolded = Bubble(provenance: .other, isReplying: true, isFolded: true, isPlaying: false, audio: AudioMessage(audioName: "AUDIO-2022-11-21-06-50-24",  duration: 120))
+var testBubbleExtNoReplyFolded = Bubble(provenance: .other, isReplying: false, isFolded: true, isPlaying: false, audio: AudioMessage(audioName: "AUDIO-2022-11-21-06-50-24", duration: 120))
+var testBubbleMeReplyFolded = Bubble(provenance: .me, isReplying: true, isFolded: true, isPlaying: false, audio: AudioMessage( audioName: "AUDIO-2022-11-21-06-50-24", duration: 790))
+var testBubbleMeNoReplyFolded = Bubble(provenance: .me, isReplying: false, isFolded: true, isPlaying: false, audio: AudioMessage( audioName: "AUDIO-2022-11-21-06-50-24", duration: 790))
 
-var testBubbleExtReplyBig = Bubble(provenance: .other, isReplying: true, isFolded: false, isPlaying: false, audio: AudioMessage(duration: 120))
-var testBubbleExtNoReplyBig = Bubble(provenance: .other, isReplying: false, isFolded: false, isPlaying: false, audio: AudioMessage(duration: 120))
-var testBubbleMeReplyBig = Bubble(provenance: .me, isReplying: true, isFolded: false, isPlaying: false, audio: AudioMessage( duration: 790))
-var testBubbleMeNoReplyBig = Bubble(provenance: .me, isReplying: false, isFolded: false, isPlaying: false, audio: AudioMessage( duration: 790))
+var testBubbleExtReplyBig = Bubble(provenance: .other, isReplying: true, isFolded: false, isPlaying: false, audio: AudioMessage(audioName: "AUDIO-2022-11-21-06-50-24", duration: 120))
+var testBubbleExtNoReplyBig = Bubble(provenance: .other, isReplying: false, isFolded: false, isPlaying: false, audio: AudioMessage(audioName: "AUDIO-2022-11-21-06-50-24", duration: 120))
+var testBubbleMeReplyBig = Bubble(provenance: .me, isReplying: true, isFolded: false, isPlaying: false, audio: AudioMessage( audioName: "AUDIO-2022-11-21-06-50-24", duration: 790))
+var testBubbleMeNoReplyBig = Bubble(provenance: .me, isReplying: false, isFolded: false, isPlaying: false, audio: AudioMessage( audioName: "AUDIO-2022-11-21-06-50-24", duration: 790))
 
 var disscuss = [
     testBubbleExtReplyBig,
@@ -139,6 +141,51 @@ func shuffleFakeWave() -> [Int]{
 
 /// AUDIO MANAGER
 ///
+
+
+struct bribMonologue {
+    var aPosition : Int
+    var aPulse : Float
+}
+
+func monologueToWaveform() /*-> [bribMonologue]*/ {
+    var monologue : [bribMonologue] = []
+    //recuperer le son
+    let sourceFile: AVAudioFile
+    let format: AVAudioFormat
+    do {
+        let sourceFileURL = Bundle.main.url(forResource: "bad", withExtension: "mp3")!
+        sourceFile = try AVAudioFile(forReading: sourceFileURL)
+        format = sourceFile.processingFormat
+    } catch {
+        fatalError("Unable to load the source audio file: \(error.localizedDescription).")
+    }
+    
+    let engine = AVAudioEngine()
+    let player = AVAudioPlayerNode()
+
+    engine.attach(player)
+    
+    engine.connect(player, to: engine.outputNode, format: format)
+    
+    player.scheduleFile(sourceFile,
+                            at: nil,
+                            completionCallbackType: .dataPlayedBack)
+    
+    do {
+        try engine.start()
+        player.play()
+    } catch {
+        fatalError("Unable to start audio engine: \(error).")
+    }
+    
+    
+    //lire son PCM
+    //populer monologue
+  ///  return monologue
+}
+
+
 
 
 func readWavIntoFloats(fname: String, ext: String) -> [Float] {
@@ -202,6 +249,6 @@ func readWavIntoFloats(fname: String, ext: String) -> [Float] {
 
 }
 
-
 var audioToChart : [Float] = readWavIntoFloats(fname: "bad", ext: "mp3")
+
 

@@ -10,6 +10,7 @@ import Charts
 import AVFoundation
 
 struct SingleChatView: View {
+
     var body: some View {
         
         ZStack {
@@ -72,7 +73,7 @@ struct BubbleView : View {
                                 Button {
                                     
                                     // play the audio
-                                    
+                                    AudioManager.shared.startPlayer(messageAudioName: voiceMessage.audio.audioName)
                                     voiceMessage.isPlaying.toggle()
                                     voiceMessage.isFolded.toggle()
                                     playingSymbol = "pause.fill"
@@ -98,6 +99,8 @@ struct BubbleView : View {
                                     Button {
                                         
                                         // pause and play the message
+                                        
+                                        AudioManager.shared.startPlayer(messageAudioName: voiceMessage.audio.audioName)
                                         voiceMessage.isPlaying.toggle()
                                         playingSymbol = voiceMessage.isPlaying ? "pause.fill" : "play.fill"
                                     } label: {

@@ -16,7 +16,7 @@ struct AudioWaveform: View {
     var body: some View {
         ZStack {
             VStack {
-                Monologue()
+                MonologueView()
                 
                 HStack {
                     Text("3:00")
@@ -65,7 +65,7 @@ struct AudioWaveform: View {
  */
  
 
-struct Monologue : View{
+struct MonologueView : View{
     var body: some View{
         Chart {
             BarMark(
@@ -96,7 +96,7 @@ struct AudioWaveformView_Previews: PreviewProvider {
     static var previews: some View {
         
         BubbleView(voiceMessage: testBubbleMeReplyBig)
-        Monologue()
+        MonologueView()
         
     }
 }

@@ -31,6 +31,10 @@
 		E1A2B8CB292A92F900700366 /* AudioWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8CA292A92F900700366 /* AudioWaveformView.swift */; };
 		E1A2B8CF292AB48100700366 /* Loved.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8CE292AB48100700366 /* Loved.wav */; };
 		E1A2B8D1292ADBAB00700366 /* bad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D0292ADBAB00700366 /* bad.mp3 */; };
+		E1A2B8D6292CD60200700366 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8D5292CD60200700366 /* AudioManager.swift */; };
+		E1A2B8DA292CE2EB00700366 /* AUDIO-2022-11-21-06-50-24.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D7292CE2EA00700366 /* AUDIO-2022-11-21-06-50-24.m4a */; };
+		E1A2B8DB292CE2EB00700366 /* AUDIO-2022-11-21-07-02-16.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D8292CE2EA00700366 /* AUDIO-2022-11-21-07-02-16.m4a */; };
+		E1A2B8DC292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D9292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		E1A2B8CC292A9B5500700366 /* WhatzApp-Comic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WhatzApp-Comic-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E1A2B8CE292AB48100700366 /* Loved.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Loved.wav; sourceTree = "<group>"; };
 		E1A2B8D0292ADBAB00700366 /* bad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bad.mp3; sourceTree = "<group>"; };
+		E1A2B8D5292CD60200700366 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		E1A2B8D7292CE2EA00700366 /* AUDIO-2022-11-21-06-50-24.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-06-50-24.m4a"; sourceTree = "<group>"; };
+		E1A2B8D8292CE2EA00700366 /* AUDIO-2022-11-21-07-02-16.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-07-02-16.m4a"; sourceTree = "<group>"; };
+		E1A2B8D9292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-13-33-12.m4a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A2B8AC29278DEB00700366 /* BubbleModel.swift */,
+				E1A2B8D5292CD60200700366 /* AudioManager.swift */,
 				E1A2B8AE2927A60A00700366 /* RecordModel.swift */,
 				E1A2B8B22928FF7B00700366 /* ReactionSpriteKit.swift */,
 			);
@@ -155,6 +164,9 @@
 		E1A2B8D4292C060000700366 /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E1A2B8D7292CE2EA00700366 /* AUDIO-2022-11-21-06-50-24.m4a */,
+				E1A2B8D8292CE2EA00700366 /* AUDIO-2022-11-21-07-02-16.m4a */,
+				E1A2B8D9292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a */,
 				E1A2B8CE292AB48100700366 /* Loved.wav */,
 				E1A2B8D0292ADBAB00700366 /* bad.mp3 */,
 			);
@@ -221,9 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A2B8D1292ADBAB00700366 /* bad.mp3 in Resources */,
+				E1A2B8DC292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a in Resources */,
 				E1A2B8B5292910DA00700366 /* heart.atlas in Resources */,
 				E1A2B8C6292928A500700366 /* dislike.atlas in Resources */,
 				E1A2B8CF292AB48100700366 /* Loved.wav in Resources */,
+				E1A2B8DB292CE2EB00700366 /* AUDIO-2022-11-21-07-02-16.m4a in Resources */,
+				E1A2B8DA292CE2EB00700366 /* AUDIO-2022-11-21-06-50-24.m4a in Resources */,
 				E1A2B8952926C81700700366 /* Preview Assets.xcassets in Resources */,
 				E1A2B8C9292928A500700366 /* lol.atlas in Resources */,
 				E1A2B8C8292928A500700366 /* wow.atlas in Resources */,
@@ -243,6 +258,7 @@
 				E1A2B8902926C81600700366 /* ContentView.swift in Sources */,
 				E1A2B8AB2926CE8900700366 /* CreditView.swift in Sources */,
 				E1A2B8CB292A92F900700366 /* AudioWaveformView.swift in Sources */,
+				E1A2B8D6292CD60200700366 /* AudioManager.swift in Sources */,
 				E1A2B8A12926CA7100700366 /* SettingsView.swift in Sources */,
 				E1A2B88E2926C81600700366 /* WhatzApp_ComicApp.swift in Sources */,
 				E1A2B8A32926CA7F00700366 /* CameraView.swift in Sources */,

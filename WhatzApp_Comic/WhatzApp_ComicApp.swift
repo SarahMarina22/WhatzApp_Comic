@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct WhatzApp_ComicApp: App {
+    @StateObject var audioManager = AudioManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(audioManager)
         }
     }
 }
