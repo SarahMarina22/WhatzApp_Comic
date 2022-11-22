@@ -10,7 +10,6 @@ import Charts
 import AVFoundation
 
 struct SingleChatView: View {
-
     var body: some View {
         
         ZStack {
@@ -28,14 +27,16 @@ struct SingleChatView: View {
 struct SingleChatView_Previews: PreviewProvider {
     static var previews: some View {
         SingleChatView()
+            .environmentObject(AudioManager())
     }
 }
 
 
 
 struct BubbleView : View {
+    @EnvironmentObject var audioManager : AudioManager
     @State var voiceMessage : Bubble
-    @State var playingSymbol : String = "play.fill"
+    @State var playingSymbol : String = "pause.fill"
     var body: some View{
         ZStack(alignment: .center){
             Image(voiceMessage.bubbleShaper())
@@ -73,7 +74,7 @@ struct BubbleView : View {
                                 Button {
                                     
                                     // play the audio
-                                    AudioManager.shared.startPlayer(messageAudioName: voiceMessage.audio.audioName)
+                                    audioManager.startPlayer(messageAudioName: voiceMessage.audio.audioName)
                                     voiceMessage.isPlaying.toggle()
                                     voiceMessage.isFolded.toggle()
                                     playingSymbol = "pause.fill"
@@ -83,11 +84,13 @@ struct BubbleView : View {
                                         .font(.system(size: 25))
                                 }
                                 
-                                Text(voiceMessage.audio.durationHumanFormatter())
-                                    .padding(.top,8)
-                                    .padding(.bottom,5)
-                                    .foregroundColor(.secondary)
-                                    .font(.system(size: 13))
+                                if let player = audioManager.player {
+                                    Text(DateComponentsFormatter.abbreviated.string(from : audioManager.player!.duration) ?? "--m --s")
+                                        .padding(.top,8)
+                                        .padding(.bottom,5)
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 13))
+                                }
                             }
                             .padding(.top,voiceMessage.isReplying  && voiceMessage.provenance == .me ? 40 : voiceMessage.isReplying  && voiceMessage.provenance == .other ? 50 : !voiceMessage.isReplying  && voiceMessage.provenance == .me ? 20 : !voiceMessage.isReplying  && voiceMessage.provenance == .other ? 20 : 0)
                             .padding(.leading, !voiceMessage.isReplying  && voiceMessage.provenance == .me ? -20 : !voiceMessage.isReplying  && voiceMessage.provenance == .other ? 20 : 0)
@@ -100,20 +103,22 @@ struct BubbleView : View {
                                         
                                         // pause and play the message
                                         
-                                        AudioManager.shared.startPlayer(messageAudioName: voiceMessage.audio.audioName)
+                                        audioManager.playPause()
                                         voiceMessage.isPlaying.toggle()
-                                        playingSymbol = voiceMessage.isPlaying ? "pause.fill" : "play.fill"
+                                        playingSymbol = audioManager.isPlaying ? "pause.fill" : "play.fill"
                                     } label: {
                                         Image(systemName: playingSymbol)
                                             .foregroundColor(.gray)
                                             .font(.system(size: 25))
                                     }
                                     
+                                }.onAppear(){
+                                    audioManager.startPlayer(messageAudioName: voiceMessage.audio.audioName)
                                 }
                                 Spacer()
                                 AudioWaveform()
-                                .padding(.horizontal)
-                                .padding(.top)
+                                    .padding(.horizontal)
+                                    .padding(.top)
                                 Button {
                                     // forward to the next trim existing
                                 }label: {
@@ -140,11 +145,12 @@ struct BubbleView : View {
                     }
                 }
         }
-        .padding(.leading,voiceMessage.isFolded  && voiceMessage.provenance == .me ? 290 : voiceMessage.isFolded  && voiceMessage.provenance == .other ? -200 : !voiceMessage.isFolded  && voiceMessage.provenance == .me ? 30 : !voiceMessage.isFolded  && voiceMessage.provenance == .other  && voiceMessage.isReplying == true ? -45 : -15)
+        .padding(.leading,voiceMessage.isFolded  && voiceMessage.provenance == .me ? 290 : voiceMessage.isFolded  && voiceMessage.provenance == .other ? -170 : !voiceMessage.isFolded  && voiceMessage.provenance == .me ? 60 : !voiceMessage.isFolded  && voiceMessage.provenance == .other  && voiceMessage.isReplying == true ? 25 : -50)
     }
 }
 
 struct TheTimeline : View {
+    @EnvironmentObject var audioManager : AudioManager
     let rows = [
         GridItem(.fixed(125)),
         GridItem(.fixed(105)),
@@ -161,7 +167,8 @@ struct TheTimeline : View {
                     
                     ForEach(disscuss) { item in
                         
-                        BubbleView(voiceMessage:  item)
+                        BubbleView(voiceMessage:  item).shadow(color: Color(UIColor.systemGray5), radius: 1, x: 0, y: 0)
+                        
                         
                     }
                 }
@@ -175,18 +182,21 @@ struct TheTimeline : View {
 }
 
 struct ArianaLine : View{
+    @EnvironmentObject var audioManager : AudioManager
     var body: some View{
         ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .foregroundColor(Color("Ariane"))
                 .overlay{
-                    HStack{
-                        Text("Monday")
-                        Spacer()
-                        Text("09:30")
-                    }.padding(.horizontal,10)
-                        .fontWeight(.medium)
-                        .font(.system(size: 15))
+                    if let player = audioManager.player {
+                        HStack{
+                            Text("Monday")
+                            Spacer()
+                            Text("09:30")
+                        }.padding(.horizontal,10)
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                    }
                 }
                 .frame(width: 380,height: 25)
         }.padding(.leading,20)

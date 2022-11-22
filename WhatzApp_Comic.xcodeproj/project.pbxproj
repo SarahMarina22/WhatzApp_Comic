@@ -35,6 +35,7 @@
 		E1A2B8DA292CE2EB00700366 /* AUDIO-2022-11-21-06-50-24.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D7292CE2EA00700366 /* AUDIO-2022-11-21-06-50-24.m4a */; };
 		E1A2B8DB292CE2EB00700366 /* AUDIO-2022-11-21-07-02-16.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D8292CE2EA00700366 /* AUDIO-2022-11-21-07-02-16.m4a */; };
 		E1A2B8DC292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E1A2B8D9292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a */; };
+		E1A2B8DE292D179000700366 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B8DD292D179000700366 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		E1A2B8D7292CE2EA00700366 /* AUDIO-2022-11-21-06-50-24.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-06-50-24.m4a"; sourceTree = "<group>"; };
 		E1A2B8D8292CE2EA00700366 /* AUDIO-2022-11-21-07-02-16.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-07-02-16.m4a"; sourceTree = "<group>"; };
 		E1A2B8D9292CE2EB00700366 /* AUDIO-2022-11-21-13-33-12.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AUDIO-2022-11-21-13-33-12.m4a"; sourceTree = "<group>"; };
+		E1A2B8DD292D179000700366 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				E1A2B8A02926CA7100700366 /* SettingsView.swift */,
 				E1A2B8A22926CA7F00700366 /* CameraView.swift */,
 				E1A2B8A42926CA9400700366 /* CallsView.swift */,
+				E1A2B8DD292D179000700366 /* Extensions.swift */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				E1A2B8A72926CAA600700366 /* ChatView.swift in Sources */,
 				E1A2B8AD29278DEB00700366 /* BubbleModel.swift in Sources */,
 				E1A2B8A52926CA9400700366 /* CallsView.swift in Sources */,
+				E1A2B8DE292D179000700366 /* Extensions.swift in Sources */,
 				E1A2B8B129287D9400700366 /* KeyboardView.swift in Sources */,
 				E1A2B8B32928FF7B00700366 /* ReactionSpriteKit.swift in Sources */,
 				E1A2B8AF2927A60A00700366 /* RecordModel.swift in Sources */,

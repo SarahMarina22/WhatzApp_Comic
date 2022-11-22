@@ -9,10 +9,14 @@ import Foundation
 import AVKit
  
 final class AudioManager : ObservableObject {
-  //  static let shared = AudioManager()
+ 
     
     var player : AVAudioPlayer?
-    
+    @Published private(set) var isPlaying : Bool = false{
+        didSet {
+            print("is Playing ", isPlaying )
+        }
+    }
     func startPlayer(messageAudioName : String){
         guard let sourceFileURL = Bundle.main.url(forResource: messageAudioName, withExtension: "m4a")  else {
             print("Audio file not found: \(messageAudioName)")
@@ -21,15 +25,35 @@ final class AudioManager : ObservableObject {
         
         do{
             
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .voiceChat)
+            // So the sound keeps playing in background and keeps playing in silent mode
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback,
+                                    mode: .default)
+            
             try AVAudioSession.sharedInstance().setActive(true)
             player = try AVAudioPlayer(contentsOf: sourceFileURL)
-            
+            player?.prepareToPlay()
             player?.play()
+            isPlaying = true
         }catch{
             print("Fail to play", error)
         }
         
+    }
+    
+    
+    func playPause()  {
+        guard let player = player else {
+            print("Issue with audio not found")
+            return
+        }
+        
+        if player.isPlaying {
+            player.pause()
+            isPlaying = false
+        }else{
+            player.play()
+            isPlaying = true
+        }
     }
     
 }

@@ -11,31 +11,59 @@ import AVFoundation
 import Charts
 
 struct AudioWaveform: View {
+    @EnvironmentObject var audioManager : AudioManager
+    @State private var isEditing : Bool = false
     @State var audioMessage : Double = 0.0
+    
+    let timer = Timer
+        .publish(every: 0.5, on: .main, in: .common)
+        .autoconnect()
     
     var body: some View {
         ZStack {
             VStack {
                 MonologueView()
                 
-                HStack {
-                    Text("3:00")
-                        .padding(.bottom,5)
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 13))
-                    Spacer()
-                    Text("-0:50")
-                        .padding(.bottom,5)
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 13))
-                }.fontWeight(.light)
+                /// MARK : Playback Time
+                if let player = audioManager.player {
+                    HStack {
+                        Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
+                            .padding(.bottom,5)
+                            .foregroundColor(.secondary)
+                            .font(.system(size: 13))
+                        Spacer()
+                        Text(DateComponentsFormatter.positional.string(from: player.currentTime - player.duration) ?? "-0:00")
+                            .padding(.bottom,5)
+                            .foregroundColor(.secondary)
+                            .font(.system(size: 13))
+                    }.fontWeight(.light)
+                    
+                }
                 
             }
-            Slider(value: $audioMessage, in: 0...60)
-                .tint(audioMessage > 30.0 ? Color("fromMe") : .red)
-                .frame(width: 150)
-                .offset(y: -6.5)
+            // Conditional binding for the slider duration and pace
+            if let player = audioManager.player {
+                Slider(value: $audioMessage, in: 0...player.duration){ editing in
+                    if !editing {
+                        isEditing = editing
+                        player.currentTime = audioMessage
+                    }
+                    
+                }
+                    .tint(audioMessage > 30.0 ? Color("fromMe") : .red)
+                    .frame(width: 150)
+                    .offset(y: -15.5)
+                    .overlay{
+                        MonologueView()
+                            .offset(y: -15.5)
+                           // .fill(Color("fromMe"))
+                    }
+            }
             //  .mask({Text("WhatsApp")})
+        }.onReceive(timer){ _ in
+            guard let player = audioManager .player, !isEditing else { return}
+            audioMessage = player.currentTime
+            
         }
     }
     
@@ -96,7 +124,6 @@ struct AudioWaveformView_Previews: PreviewProvider {
     static var previews: some View {
         
         BubbleView(voiceMessage: testBubbleMeReplyBig)
-        MonologueView()
-        
+            .environmentObject(AudioManager())
     }
 }
