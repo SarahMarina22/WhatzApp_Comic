@@ -14,9 +14,10 @@ struct SingleChatView: View {
         
         ZStack {
             Color("Color")
+                .opacity(0.9)
                 .ignoresSafeArea()
             VStack{
-                Header()//.padding(.bottom,30)
+                Header()
                 TheTimeline()
                 Keyboard()
             }
@@ -62,7 +63,7 @@ struct BubbleView : View {
                                         Spacer()
                                         
                                     }
-                                } .padding(.top,30)
+                                } .padding(.top, voiceMessage.bubbleFrame == .big ? 45 : 30)
                                     .padding(.leading,voiceMessage.isFolded  && voiceMessage.provenance == .me ? 90 : voiceMessage.isFolded  && voiceMessage.provenance == .other ? 25 : !voiceMessage.isFolded  && voiceMessage.provenance == .me ? 325 : !voiceMessage.isFolded  && voiceMessage.provenance == .other ? 35 : 0)
                             }
                             
@@ -120,6 +121,16 @@ struct BubbleView : View {
                              AudioWaveform()
                                     .padding(.horizontal)
                                     .padding(.top)
+                                    .overlay{
+                                        if(voiceMessage.bubbleFrame == .big){
+                                            HStack {
+                                                ReactionAddedView(aReaction: audioManager.reactionName)
+                                                    .padding(.bottom,  70)
+                                                    .offset(x:150)
+                                                Spacer()
+                                            }.frame(width: 170, alignment: .leading)
+                                        }
+                                    }
                                 Button {
                                     // forward to the next trim existing
                                 }label: {

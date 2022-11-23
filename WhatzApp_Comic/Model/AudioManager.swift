@@ -17,6 +17,7 @@ final class AudioManager : ObservableObject {
             print("is Playing ", isPlaying )
         }
     }
+    
     func startPlayer(messageAudioName : String){
         guard let sourceFileURL = Bundle.main.url(forResource: messageAudioName, withExtension: "m4a")  else {
             print("Audio file not found: \(messageAudioName)")
@@ -45,12 +46,16 @@ final class AudioManager : ObservableObject {
         guard let sourceFileURL = Bundle.main.url(forResource: messageAudioName, withExtension: "m4a")else {return ""}
        
         let dateFormatter = DateFormatter()
+        let weekday = dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from: Date()) - 1]
         
-        dateFormatter.dateFormat = "YY-MM-dd"
+        dateFormatter.dateFormat = "dd, MMM"
         
-        info = dateFormatter.string(from: sourceFileURL.createdDate)
- 
-            return info
+        info = weekday + " " + dateFormatter.string(from: sourceFileURL.createdDate)
+        
+        print("weekday", weekday)
+        print("info", info)
+        print("standalone", dateFormatter.standaloneWeekdaySymbols!)
+        return info
         
     }
     
@@ -60,14 +65,14 @@ final class AudioManager : ObservableObject {
        
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "HH:mm"
+        
         
         info = dateFormatter.string(from: sourceFileURL.createdDate)
  
-            return info
+        return info
         
     }
-    
     
     func playPause()  {
         guard let player = player else {
@@ -83,6 +88,8 @@ final class AudioManager : ObservableObject {
             isPlaying = true
         }
     }
+    
+    @Published public var reactionName : String = ""
     
 }
 

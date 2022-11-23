@@ -9,6 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct Keyboard:View{
+    
     @State var voiceInShape : String = "Voice Message"
     @State var isVoiceMessageDone : Bool = false
     @State var isVoiceMessagePlaying : Bool = false // should be a variable environement
@@ -230,37 +231,38 @@ struct ReactionBtn: View {
 
 
 struct ReactionEmoji:View{
+    @EnvironmentObject var audioManager : AudioManager
     var body: some View{
         
         VStack {
             HStack {
                 Button {
-                    // put a heart above the waveform
+                    audioManager.reactionName = "heart0"
                 } label: {
                     SpriteView(scene: heart)
                 }
                 Button {
-                    // put a like above the waveform
+                    audioManager.reactionName = "like0"
                 } label: {
                     SpriteView(scene: like)
                 }
                 Button {
-                    // put a dislike above the waveform
+                    audioManager.reactionName = "dislike0"
                 } label: {
                     SpriteView(scene: dislike)
                 }
                 Button {
-                    // put a haha above the waveform
+                    audioManager.reactionName = "lol0"
                 } label: {
                     SpriteView(scene: lol)
                 }
                 Button {
-                    // put a  !!  above the waveform
+                    audioManager.reactionName = "wow0"
                 } label: {
                     SpriteView(scene: wow)
                 }
                 Button {
-                    // put a ? above the waveform
+                    audioManager.reactionName = "what0"
                 } label: {
                     SpriteView(scene: what)
                 }

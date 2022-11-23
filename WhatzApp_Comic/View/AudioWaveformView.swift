@@ -9,11 +9,19 @@ import SwiftUI
 import AVFAudio
 import AVFoundation
 import Charts
+import DSWaveformImage
 
 struct AudioWaveform: View {
     @EnvironmentObject var audioManager : AudioManager
     @State private var isEditing : Bool = false
     @State var audioMessage : Double = 0.0
+    
+    @State var audioURL = Bundle.main.url(forResource: "AUDIO-2022-11-21-06-50-24", withExtension: "m4a")!
+    @State  var waveConfig : Waveform.Configuration = Waveform.Configuration(
+        style: .filled(.gray),
+        position: .origin(CGPoint(x: 0.6, y: 0.6)),
+        verticalScalingFactor: 0.15
+    )
     
     let timer = Timer
         .publish(every: 0.5, on: .main, in: .common)
@@ -21,15 +29,17 @@ struct AudioWaveform: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack (spacing: 40){
+                // MARK : Waveform
                 ZStack{
                     
-                   // MonologueView()
-                   // MonologueOverView(waveColor: .black)
-                        
+                    WaveformView(audioURL: audioURL, configuration: waveConfig.with(style: .striped(.init(color: .gray, width:2, spacing: 2))), priority: .low)
+                        .scaledToFill()
                     
-                }
-                /// MARK : Playback Time
+                     //   .padding()
+                    
+                }.frame(height: 50)
+                // MARK : Playback Time
                 if let player = audioManager.player {
                     HStack {
                         Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
@@ -41,7 +51,10 @@ struct AudioWaveform: View {
                             .padding(.bottom,5)
                             .foregroundColor(.secondary)
                             .font(.system(size: 13))
+                            .bold()
                     }.fontWeight(.light)
+                        .offset(y: -35)
+                        
                     
                 }
                 
@@ -49,18 +62,16 @@ struct AudioWaveform: View {
             
             // Conditional binding for the slider duration and pace
             if let player = audioManager.player {
-                  Slider(value: $audioMessage, in: 0...player.duration){ editing in
+                Slider(value: $audioMessage, in: 0...player.duration){ editing in
                     if !editing {
                         isEditing = editing
                         player.currentTime = audioMessage
                     }
                     
                 }
-                    .tint(audioMessage > 30.0 ? Color("fromMe") : .red)
-                    .frame(width: 150)
-                    .offset(y: -15.5)
-                  //  .mask(Text("What is alpha"))
-                  
+                .tint(audioMessage < 290.0 ? Color("fromMe") : .red)
+                .offset(y: -15.5)
+                
             }
             
         }.onReceive(timer){ _ in
@@ -72,29 +83,6 @@ struct AudioWaveform: View {
     
 }
 
-/*
- 
- struct Monologue : View{
-     var body: some View{
-         Chart {
-             ForEach(testBubbleExtReplyBig.audio.waveform,id: \.self){ strp in
-                 BarMark(
-                     x: .value("sarah", testBubbleExtReplyBig.audio.waveform[strp].distance(to: 0)),
-                     y: .value("age", strp)
-                 ).foregroundStyle(.green)
-                     .cornerRadius(60)
-                     
-                    // .foregroundStyle(.shadow(.drop(radius: 90)))
-             }
-         }.chartXAxis(.hidden)
-             .chartYAxis(.hidden)
-             .frame(width : 140,height: 20)
-
-     }
- }
- 
- */
- 
 
 struct MonologueView : View{
     var body: some View{
@@ -118,35 +106,10 @@ struct MonologueView : View{
         }.chartXAxis(.hidden)
             .chartYAxis(.hidden)
             .frame(width :  140,height: 20)
-
+        
     }
 }
 
-struct MonologueOverView : View{
-    var waveColor : Color
-    var body: some View{
-        Chart {
-            BarMark(
-                x: .value("sarah", 0),
-                y: .value("age", 2022)
-            ).foregroundStyle(waveColor)
-            BarMark(
-                x: .value("sarah", 1),
-                y: .value("age", 5021)
-            ).foregroundStyle(waveColor)
-            BarMark(
-                x: .value("sarah", 2),
-                y: .value("age", 2022)
-            ).foregroundStyle(waveColor)
-            BarMark(
-                x: .value("sarah", 3),
-                y: .value("age", 4021)
-            ).foregroundStyle(waveColor)
-        }.chartXAxis(.hidden)
-            .chartYAxis(.hidden)
-          
-    }
-}
 
 struct HomeMadeSlider : View {
     @EnvironmentObject var audioManager : AudioManager
@@ -181,8 +144,20 @@ struct HomeMadeSlider : View {
 
 struct AudioWaveformView_Previews: PreviewProvider {
     static var previews: some View {
-        
+        ScrollView(.horizontal){
+            WaveformView(audioURL: audioURL, configuration: waveConfig.with(style: .striped(.init(color: .gray, width: 3, spacing: 2))), priority: .high)
+                .scaledToFit()
+                .frame(width: 140)
+                .padding()
+        }
         BubbleView(voiceMessage: testBubbleMeReplyBig)
             .environmentObject(AudioManager())
     }
 }
+
+var audioURL = Bundle.main.url(forResource: "AUDIO-2022-11-21-06-50-24", withExtension: "m4a")!
+var waveConfig : Waveform.Configuration = Waveform.Configuration(
+    style: .filled(.gray),
+    position: .origin(CGPoint(x: 0.6, y: 0.6)),
+    verticalScalingFactor: 0.5
+)
