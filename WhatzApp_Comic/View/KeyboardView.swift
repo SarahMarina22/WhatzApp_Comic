@@ -11,7 +11,7 @@ import SpriteKit
 struct Keyboard:View{
     @State var voiceInShape : String = "Voice Message"
     @State var isVoiceMessageDone : Bool = false
-    @State var isVoiceMessagePlaying : Bool = false // variable environement
+    @State var isVoiceMessagePlaying : Bool = false // should be a variable environement
     @State var isReactionBtnPressed : Bool = false
     var body: some View{
         VStack {
@@ -97,9 +97,9 @@ struct RecButton: View{
                 .frame(width: 120,height: 120)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
-                        /*breathe.toggle()*/}
+                        breathe.toggle()}
                 }
-                .scaleEffect(breathe ? 1: 2)
+               // .scaleEffect(breathe ? 1: 2)
                 .opacity(breathe ? 1 : 0)
             Image("Rec Btn")
                 .resizable()
@@ -108,7 +108,6 @@ struct RecButton: View{
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                     }
                 }
-                .scaleEffect(breathe ? 2 :  1)
                 .opacity(!breathe ? 0 : 1)
             Button {
                 //
@@ -138,7 +137,7 @@ struct TrimButton: View{
                 .frame(width: 120,height: 120)
                 .onAppear(){
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
-                        /*breathe.toggle()*/}
+                        breathe.toggle()}
                 }
                 .scaleEffect(breathe ? 1: 2)
                 .opacity(breathe ? 1 : 0)
@@ -149,15 +148,14 @@ struct TrimButton: View{
                     withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
                     }
                 }
-                .scaleEffect(breathe ? 2 :  1)
-                .opacity(!breathe ? 0 : 1)
+                .opacity(!breathe ? 0 : 0.8)
             Button {
                 //
             } label: {
                 ZStack {
                     Image("TrimBtn")
                         .resizable()
-                        .frame(width: 40,height: 40)
+                        .frame(width: 60,height: 60)
                     Image(systemName:  buttonSymbol)
                         .resizable()
                         .frame(width: 33,height: 38)
