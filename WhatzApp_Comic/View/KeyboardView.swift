@@ -66,10 +66,11 @@ struct Keyboard:View{
                         .scaledToFill()
                         .offset(y:-11)
                     
-                    HStack {
+                    HStack(spacing: 5) {
                         Spacer()
                         RecButton().offset(y:-35)
-                        TrimButton().offset(y:-35).padding(.trailing,20)
+                        TrimButton().offset(y:-35).padding(.trailing,70)
+                        
                     }
                 }
             } else {
@@ -134,9 +135,9 @@ struct TrimButton: View{
         ZStack{
             Image("TrimHalo")
                 .resizable()
-                .frame(width: 120,height: 120)
+                .frame(width: 70,height: 70)
                 .onAppear(){
-                    withAnimation(.linear(duration: 3).delay(0).repeatForever(autoreverses: false)){
+                    withAnimation(.linear(duration: 3).delay(10).repeatForever(autoreverses: false)){
                         breathe.toggle()}
                 }
                 .scaleEffect(breathe ? 1: 2)
@@ -158,7 +159,7 @@ struct TrimButton: View{
                         .frame(width: 60,height: 60)
                     Image(systemName:  buttonSymbol)
                         .resizable()
-                        .frame(width: 33,height: 38)
+                        .frame(width: 20,height: 20)
                         .foregroundColor(.blue)
                 }
             }

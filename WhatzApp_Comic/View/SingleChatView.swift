@@ -195,7 +195,7 @@ struct ArianaLine : View{
                             Text(audioManager.getDate(messageAudioName: voiceMessage.audio.audioName))
                             Spacer()
                             Text(audioManager.getHour(messageAudioName: voiceMessage.audio.audioName))
-                        }.padding(.horizontal,10)
+                        }.padding(.horizontal,15)
                             .fontWeight(.medium)
                             .font(.system(size: 15))
                     }
