@@ -22,8 +22,13 @@ struct AudioWaveform: View {
     var body: some View {
         ZStack {
             VStack {
-                MonologueView()
-                
+                ZStack{
+                    
+                   // MonologueView()
+                   // MonologueOverView(waveColor: .black)
+                        
+                    
+                }
                 /// MARK : Playback Time
                 if let player = audioManager.player {
                     HStack {
@@ -41,9 +46,10 @@ struct AudioWaveform: View {
                 }
                 
             }
+            
             // Conditional binding for the slider duration and pace
             if let player = audioManager.player {
-                Slider(value: $audioMessage, in: 0...player.duration){ editing in
+                  Slider(value: $audioMessage, in: 0...player.duration){ editing in
                     if !editing {
                         isEditing = editing
                         player.currentTime = audioMessage
@@ -53,13 +59,10 @@ struct AudioWaveform: View {
                     .tint(audioMessage > 30.0 ? Color("fromMe") : .red)
                     .frame(width: 150)
                     .offset(y: -15.5)
-                    .overlay{
-                        MonologueView()
-                            .offset(y: -15.5)
-                           // .fill(Color("fromMe"))
-                    }
+                  //  .mask(Text("What is alpha"))
+                  
             }
-            //  .mask({Text("WhatsApp")})
+            
         }.onReceive(timer){ _ in
             guard let player = audioManager .player, !isEditing else { return}
             audioMessage = player.currentTime
@@ -99,25 +102,81 @@ struct MonologueView : View{
             BarMark(
                 x: .value("sarah", 0),
                 y: .value("age", 2022)
-            ).foregroundStyle(.orange)
+            ).foregroundStyle(.gray)
             BarMark(
                 x: .value("sarah", 1),
                 y: .value("age", 5021)
-            ).foregroundStyle(.red)
+            ).foregroundStyle(.gray)
             BarMark(
                 x: .value("sarah", 2),
                 y: .value("age", 2022)
-            ).foregroundStyle(.yellow)
+            ).foregroundStyle(.gray)
             BarMark(
                 x: .value("sarah", 3),
                 y: .value("age", 4021)
-            ).foregroundStyle(.green)
+            ).foregroundStyle(.gray)
         }.chartXAxis(.hidden)
             .chartYAxis(.hidden)
             .frame(width :  140,height: 20)
 
     }
 }
+
+struct MonologueOverView : View{
+    var waveColor : Color
+    var body: some View{
+        Chart {
+            BarMark(
+                x: .value("sarah", 0),
+                y: .value("age", 2022)
+            ).foregroundStyle(waveColor)
+            BarMark(
+                x: .value("sarah", 1),
+                y: .value("age", 5021)
+            ).foregroundStyle(waveColor)
+            BarMark(
+                x: .value("sarah", 2),
+                y: .value("age", 2022)
+            ).foregroundStyle(waveColor)
+            BarMark(
+                x: .value("sarah", 3),
+                y: .value("age", 4021)
+            ).foregroundStyle(waveColor)
+        }.chartXAxis(.hidden)
+            .chartYAxis(.hidden)
+          
+    }
+}
+
+struct HomeMadeSlider : View {
+    @EnvironmentObject var audioManager : AudioManager
+    @State var width : CGFloat = 0
+    
+    var body: some View {
+        VStack(spacing : 20){
+            ZStack(alignment: .leading){
+                Capsule().fill(.gray).frame(height: 8)
+                Capsule().fill(.red).frame(width: self.width, height: 8)
+                    .gesture(DragGesture()
+                        .onChanged({ (value) in
+                            let x = value.location.x
+                            
+                            self.width = x
+                        }).onEnded({ (value) in
+                            let x = value.location.x
+                            
+                            let screen = UIScreen.main.bounds.width - 30
+                            
+                            let percent = x / screen
+                            
+                            audioManager.player?.currentTime = Double(percent) * audioManager.player!.duration
+                        }))
+            }
+        }
+    }
+}
+
+
 
 
 struct AudioWaveformView_Previews: PreviewProvider {

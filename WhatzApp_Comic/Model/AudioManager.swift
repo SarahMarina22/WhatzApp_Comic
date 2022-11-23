@@ -40,6 +40,34 @@ final class AudioManager : ObservableObject {
         
     }
     
+    func getDate(messageAudioName : String)->String{
+        var info : String = ""
+        guard let sourceFileURL = Bundle.main.url(forResource: messageAudioName, withExtension: "m4a")else {return ""}
+       
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "YY-MM-dd"
+        
+        info = dateFormatter.string(from: sourceFileURL.createdDate)
+ 
+            return info
+        
+    }
+    
+    func getHour(messageAudioName : String)->String{
+        var info : String = ""
+        guard let sourceFileURL = Bundle.main.url(forResource: messageAudioName, withExtension: "m4a")else {return ""}
+       
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "hh:mm"
+        
+        info = dateFormatter.string(from: sourceFileURL.createdDate)
+ 
+            return info
+        
+    }
+    
     
     func playPause()  {
         guard let player = player else {

@@ -43,3 +43,34 @@ extension DateComponentsFormatter{
         return formatter
     }()
 }
+
+
+extension URL {
+    var createdDate: Date {
+        let _ = self.startAccessingSecurityScopedResource()
+        let attributes = try! FileManager.default.attributesOfItem(atPath: self.path)
+        let creationDate = attributes[.creationDate] as? Date ?? Date()
+        defer {
+            self.stopAccessingSecurityScopedResource()
+        }
+        return creationDate
+    }
+    var modifiedDate: Date {
+        let _ = self.startAccessingSecurityScopedResource()
+        let attributes = try! FileManager.default.attributesOfItem(atPath: self.path)
+        let modificationDate = attributes[.modificationDate] as? Date ?? Date()
+        defer {
+            self.stopAccessingSecurityScopedResource()
+        }
+        return modificationDate
+    }
+    var size: Double {
+        let _ = self.startAccessingSecurityScopedResource()
+        let attributes = try! FileManager.default.attributesOfItem(atPath: self.path)
+        let size = attributes[.size] as? Double ?? 0
+        defer {
+            self.stopAccessingSecurityScopedResource()
+        }
+        return size
+    }
+}

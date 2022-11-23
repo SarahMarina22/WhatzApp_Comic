@@ -139,6 +139,8 @@ func shuffleFakeWave() -> [Int]{
 }
 
 
+
+
 /// AUDIO MANAGER
 ///
 
@@ -190,7 +192,6 @@ func monologueToWaveform() /*-> [bribMonologue]*/ {
 
 func readWavIntoFloats(fname: String, ext: String) -> [Float] {
 
-    let url = Bundle.main.url(forResource: fname, withExtension: ext)
     let sourceFile : AVAudioFile
     let format : AVAudioFormat
     do {

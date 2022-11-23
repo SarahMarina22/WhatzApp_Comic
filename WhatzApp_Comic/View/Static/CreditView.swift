@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CreditView: View {
     var body: some View {
-        Text("Credit design: WhatsApp & *Sarah Marina*\nCredit code : *Sarah Marina*\nCredit photo : *Brooke Cagle*")
+        Text("CREDIT DESIGN : WhatsApp & *Sarah Marina*\n\nCREDIT CODE : \n*Sarah Marina with the help of \nPaul Hudson, DesignCode for audio player, Sai Durga Mahesh for extension URL Apple WWDC*\n\nCREDIT PHOTO : *Brooke Cagle*")
             .bold()
+            .padding()
     }
 }
 

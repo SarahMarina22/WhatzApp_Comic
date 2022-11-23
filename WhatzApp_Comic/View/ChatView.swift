@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @State var searchFake = "Search"
+    @State var isModal : Bool = false
     var body: some View {
             ZStack{
                 VStack {
@@ -75,18 +76,19 @@ struct ChatView: View {
                         //Spacer()
                     }.padding(.horizontal)
                     List {
-                        NavigationLink(destination: {
-                            SingleChatView()
-                        }, label: {
+                        Button{
+                            isModal.toggle()
+                        } label: {
                             VStack {
                                 HStack{
                                     ZStack {
-                                        Circle()
-                                            .foregroundColor(.pink)
-                                            .frame(width: 50)
-                                        Image(systemName: "person.fill")
-                                            .font(.system(size: 30))
-                                            .foregroundColor(.white)
+                                        Image("Virginie")
+                                            .resizable()
+                                            .clipShape(Circle())
+                                            .scaledToFill()
+                                            .frame(width: 55,height: 55)
+                                            .shadow(color:.green,radius: 1)
+                                        
                                     }
                                     HStack{
                                         VStack(alignment: .leading){
@@ -101,7 +103,7 @@ struct ChatView: View {
                                                     .fontWeight(.regular)
                                                 
                                             }
-                                            Text("recording an audio...")
+                                            Text("recording an audio...\n ")
                                                 .font(.system(size: 15))
                                                 .italic()
                                                 .fontWeight(.regular)
@@ -111,7 +113,9 @@ struct ChatView: View {
                                     }
                                 }
                             }
-                        })
+                        }.sheet(isPresented: $isModal) {
+                            SingleChatView()
+                        }
                         VStack {
                             HStack{
                                 ZStack {
@@ -135,7 +139,7 @@ struct ChatView: View {
                                                 .fontWeight(.regular)
                                             
                                         }
-                                        Text("Okok no problem")
+                                        Text("Okok no problem\n ")
                                             .font(.system(size: 15))
                                             .fontWeight(.regular)
                                             .foregroundColor(.gray)
@@ -167,7 +171,7 @@ struct ChatView: View {
                                                 .fontWeight(.regular)
                                             
                                         }
-                                        Text("?")
+                                        Text("?\n ")
                                             .font(.system(size: 15))
                                             .fontWeight(.regular)
                                             .foregroundColor(.gray)

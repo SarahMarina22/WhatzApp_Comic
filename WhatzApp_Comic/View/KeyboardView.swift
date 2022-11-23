@@ -68,8 +68,8 @@ struct Keyboard:View{
                     
                     HStack {
                         Spacer()
-                        RecButton().offset(y:-25)
-                        TrimButton().offset(y:-25).padding(.trailing,20)
+                        RecButton().offset(y:-35)
+                        TrimButton().offset(y:-35).padding(.trailing,20)
                     }
                 }
             } else {

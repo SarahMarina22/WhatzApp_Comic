@@ -84,7 +84,7 @@ struct BubbleView : View {
                                         .font(.system(size: 25))
                                 }
                                 
-                                if let player = audioManager.player {
+                                if audioManager.player != nil {
                                     Text(DateComponentsFormatter.abbreviated.string(from : audioManager.player!.duration) ?? "--m --s")
                                         .padding(.top,8)
                                         .padding(.bottom,5)
@@ -114,9 +114,10 @@ struct BubbleView : View {
                                     
                                 }.onAppear(){
                                     audioManager.startPlayer(messageAudioName: voiceMessage.audio.audioName)
+                                 
                                 }
                                 Spacer()
-                                AudioWaveform()
+                             AudioWaveform()
                                     .padding(.horizontal)
                                     .padding(.top)
                                 Button {
@@ -175,7 +176,7 @@ struct TheTimeline : View {
             }.frame(height: 440)
             
         }, header: {
-            ArianaLine()
+            ArianaLine(voiceMessage: disscuss[0])
         })
         
     }
@@ -183,16 +184,17 @@ struct TheTimeline : View {
 
 struct ArianaLine : View{
     @EnvironmentObject var audioManager : AudioManager
+    @State var voiceMessage : Bubble
     var body: some View{
         ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .foregroundColor(Color("Ariane"))
                 .overlay{
-                    if let player = audioManager.player {
+                    if audioManager.player != nil {
                         HStack{
-                            Text("Monday")
+                            Text(audioManager.getDate(messageAudioName: voiceMessage.audio.audioName))
                             Spacer()
-                            Text("09:30")
+                            Text(audioManager.getHour(messageAudioName: voiceMessage.audio.audioName))
                         }.padding(.horizontal,10)
                             .fontWeight(.medium)
                             .font(.system(size: 15))
@@ -206,14 +208,15 @@ struct ArianaLine : View{
 }
 
 struct Header : View {
+    @State var moreInfo : Bool = false
     var body: some View {
         ZStack{
             Color(uiColor: .systemGray6)
                 .ignoresSafeArea()
             
-            NavigationLink(destination: {
-                CreditView()
-            }, label: {
+            Button {
+                moreInfo.toggle()
+            }label: {
                 VStack(alignment: .center) {
                     Spacer()
                     ZStack {
@@ -223,7 +226,7 @@ struct Header : View {
                             .scaledToFill()
                             .frame(width: 60,height: 55)
                             .shadow(color:.gray,radius: 2)
-                            .padding(.top,110)
+                            .padding(.top,180)
                         
                     }
                     HStack {
@@ -235,10 +238,10 @@ struct Header : View {
                             .resizable()
                             .frame(width: 5,height: 8)
                     }
-                    
+                }
                 }.padding(.bottom,10)
-            })
-            
+            }.sheet(isPresented: $moreInfo) {
+            CreditView()
         }
         .toolbar(.hidden, for: .tabBar)
     }
